@@ -8,7 +8,7 @@ var express = require('express'),
   
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Businessdb'); 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Businessdb'); 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
