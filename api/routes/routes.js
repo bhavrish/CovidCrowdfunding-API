@@ -3,6 +3,9 @@ module.exports = function(app) {
   var localBusinessesList = require('../controllers/localBusinessesController');
   var usersList = require('../controllers/usersController');
 
+  // app.get('/', function(req, res){
+  //   console.log("home page");
+  // });
 
   // authentication routes
   app.route('/register/business').post(localBusinessesList.create_a_business);
