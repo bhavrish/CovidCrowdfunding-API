@@ -7,7 +7,11 @@ module.exports = function(app) {
   //   console.log("home page");
   // });
 
+  app.route('/').get(localBusinessesList.list_all_businesses);
+
   // authentication routes
+  app.route('/register/business').get(localBusinessesList.create_a_business);
+  app.route('/register/user').get(usersList.create_a_user);
   app.route('/register/business').post(localBusinessesList.create_a_business);
   app.route('/register/user').post(usersList.create_a_user);
 

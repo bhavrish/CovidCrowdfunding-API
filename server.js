@@ -4,7 +4,8 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Business = require('./api/models/localBusinessesModel'),
   User = require('./api/models/usersModel'),
-  bodyParser = require('body-parser');
+  bodyParser = require('body-parser'),
+  routes = require('./api/routes/routes');
   
 
 mongoose.Promise = global.Promise;
@@ -15,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var routes = require('./api/routes/routes');
 routes(app); //register the routes
+
 
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})

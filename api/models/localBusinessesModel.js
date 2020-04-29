@@ -34,6 +34,14 @@ var LocalBusinessSchema = new Schema({
   },
   contactEmail: {
     type: String
+  },
+  latitude: {
+    type: Number,
+    required: 'Please enter latitude'
+  },
+  longitude: {
+    type: Number,
+    required: 'Please enter longitude'
   }
 });
 
