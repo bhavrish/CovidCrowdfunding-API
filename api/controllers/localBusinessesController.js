@@ -15,6 +15,16 @@ exports.list_all_businesses = function(req, res) {
 
 
 exports.create_a_business = function(req, res) {
+  if (isNaN(req.body.targetGoal)) {
+    req.body.targetGoal = parseFloat(req.body.targetGoal);
+  }
+  if (isNaN(req.body.latitude)) {
+    req.body.latitude = parseFloat(req.body.latitude);
+  }
+  if (isNaN(req.body.longitude)) {
+    req.body.longitude = parseFloat(req.body.longitude);
+  }
+
   var new_business = new Business(req.body);
   new_business.save(function(err, business) {
     if (err)
