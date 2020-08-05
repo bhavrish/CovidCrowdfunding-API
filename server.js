@@ -8,8 +8,15 @@ var express = require('express'),
   routes = require('./api/routes/routes');
   
 
-mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Businessdb'); 
+// mongoose.Promise = global.Promise;
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Businessdb'); 
+
+const db = "mongodb+srv://bhaveshshah:bhaveshshah@cluster0.hosyo.mongodb.net/covidcrowdfunding?retryWrites=true&w=majority";
+
+mongoose
+  .connect(db, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch(err => console.log(err));
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

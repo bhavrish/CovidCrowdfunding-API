@@ -3,6 +3,8 @@ module.exports = function(app) {
   var localBusinessesList = require('../controllers/localBusinessesController');
   var usersList = require('../controllers/usersController');
 
+  const checkAuth = require('../middleware/check-auth');
+
   // app.get('/', function(req, res){
   //   console.log("home page");
   // });
@@ -32,9 +34,9 @@ module.exports = function(app) {
 
   // Users Routes
   app.route('/users').get(usersList.list_all_users);
-  app.route('/users/:userId').get(usersList.read_a_user);
+  app.route('/users/:userId').get(checkAuth, usersList.read_a_user);
 
   app.route('/users/edit/:userId')
-    .put(usersList.update_a_user)
-    .delete(usersList.delete_a_user);
+    .put(checkAuth, usersList.update_a_user)
+    .delete(checkAuth, usersList.delete_a_user);
 };
